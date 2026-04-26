@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Helpdesk SaaS</title>
+
+  <link rel="stylesheet" href="helpdesk.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <!-- ================= LOGIN ================= -->
+  <div id="loginBox">
+    <h2>Admin Login</h2>
+
+    <input type="password" id="adminPass" placeholder="Enter password" />
+    <button onclick="login()">Login</button>
+  </div>
+  
+
+  <!-- ================= APP ================= -->
+  <div id="appContent" style="display:none;">
+
+    <h1>Helpdesk Dashboard</h1>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard">
+      <div class="card">Total: <span id="totalCount">0</span></div>
+      <div class="card">Pending: <span id="pendingCount">0</span></div>
+      <div class="card">Resolved: <span id="resolvedCount">0</span></div>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div id="analytics">
+
+      <div id="chartsContainer">
+        <canvas id="statusChart"></canvas>
+        <canvas id="priorityChart"></canvas>
+      </div>
+
+      <div class="analytics-grid">
+
+        <div class="analytics-card">
+          <h3>Ticket Volume</h3>
+          <p id="ticketVolume">0</p>
+        </div>
+
+        <div class="analytics-card">
+          <h3>Resolution Rate</h3>
+          <p id="resolutionRate">0%</p>
+        </div>
+
+        <div class="analytics-card">
+          <h3>Avg Response Time</h3>
+          <p id="responseTime">0 min</p>
+        </div>
+
+        <div class="analytics-card">
+          <h3>High Priority</h3>
+          <p id="highPriority">0</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <form id="ticketForm">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <textarea id="issue" placeholder="Describe issue..." required></textarea>
+
+      <select id="priority">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <button type="submit">Create Ticket</button>
+    </form>
+
+    <!-- SEARCH -->
+    <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchTickets()" />
+
+    <!-- FILTERS -->
+    <div id="filters">
+      <button onclick="filterTickets('all')">All</button>
+      <button onclick="filterTickets('Pending')">Pending</button>
+      <button onclick="filterTickets('Resolved')">Resolved</button>
+    </div>
+
+    <!-- TICKETS -->
+    <div id="tickets"></div>
+
+  </div>
+
+  <script src="helpdesk.js"></script>
+
+</body>
+
+</html>

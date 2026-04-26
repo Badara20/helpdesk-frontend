@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #f3f4f6;
+  --panel: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #f59e0b;
+  --border: #e5e7eb;
+}
+
+/* =========================
+   BASE
+========================= */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* =========================
+   LOGIN (FIXED LAYERING)
+========================= */
+#loginBox {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0f172a, #111827);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  z-index: 9999;
+}
+
+#loginBox input {
+  width: 260px;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+}
+
+#loginBox button {
+  background: var(--primary);
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* =========================
+   MAIN LAYOUT (CLEAN)
+========================= */
+#appContent {
+  padding: 25px;
+}
+
+/* =========================
+   TITLE
+========================= */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+#dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: var(--panel);
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* =========================
+   ANALYTICS
+========================= */
+#analytics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.analytics-card {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: 0.2s ease;
+}
+
+.analytics-card:hover {
+  transform: translateY(-3px);
+}
+
+.analytics-card h3 {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.analytics-card p {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* =========================
+   CHARTS
+========================= */
+#chartsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+#chartsContainer canvas {
+  background: white;
+  padding: 15px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* =========================
+   FORM
+========================= */
+form {
+  background: var(--panel);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+  margin-bottom: 20px;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary);
+}
+
+/* =========================
+   SEARCH
+========================= */
+#searchInput {
+  width: 100%;
+  max-width: 420px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin: 15px auto;
+  display: block;
+}
+
+/* =========================
+   FILTERS
+========================= */
+#filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#filters button {
+  background: #e5e7eb;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#filters button:hover {
+  background: #d1d5db;
+}
+
+/* =========================
+   TICKETS
+========================= */
+#tickets {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ticket {
+  background: var(--panel);
+  padding: 18px;
+  border-radius: 14px;
+  border-left: 6px solid #94a3b8;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+  transition: 0.2s ease;
+}
+
+.ticket:hover {
+  transform: translateY(-2px);
+}
+
+/* STATUS */
+.status {
+  font-weight: 600;
+}
+
+/* RESOLVED */
+.ticket.resolved {
+  border-left: 6px solid var(--success);
+}
+
+.ticket.resolved .status {
+  color: var(--success);
+}
+
+/* PRIORITY */
+.ticket[data-priority="High"] {
+  border-left: 6px solid var(--danger);
+}
+
+.ticket[data-priority="Medium"] {
+  border-left: 6px solid var(--warning);
+}
+
+.ticket[data-priority="Low"] {
+  border-left: 6px solid var(--success);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.resolveBtn {
+  background: var(--success);
+  color: white;
+  margin-right: 8px;
+}
+
+.deleteBtn {
+  background: var(--danger);
+  color: white;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  #dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  #chartsContainer {
+    grid-template-columns: 1fr;
+  }
+}
